@@ -1,0 +1,32 @@
+/* flex */
+
+@media (min-width: 768px) {
+  .main-header,
+  .main-nav,
+  .contents {
+    display: flex;
+  }
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .content-box {
+    flex: 1;
+  }
+  .contents {
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+#action-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
