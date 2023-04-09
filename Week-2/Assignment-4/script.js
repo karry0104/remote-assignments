@@ -2,7 +2,7 @@ const newMessage = document.getElementById("message");
 const actionBtn = document.getElementById("action-btn");
 
 newMessage.addEventListener("click", function () {
-  newMessage.innerHTML = "<h1>Have a Good Time!</h1>";
+  newMessage.textContent = "Have a Good Time!";
 });
 
 actionBtn.addEventListener("click", function () {
