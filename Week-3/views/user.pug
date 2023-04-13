@@ -6,10 +6,10 @@ html(lang='en')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title Document
   body
+  if name
     h2 Welcome, #{name}
-  //- if name
-  //- else  
-  //-   h2 Welcome
-  //-     form(action="/trackName", method="post")
-  //-        input(type="text",name="username")
-  //-        button(type="submit") Submit
+  else  
+    h2 Welcome
+      form(action="/trackName", method="post")
+         input(type="text",name="username")
+         button(type="submit") Submit

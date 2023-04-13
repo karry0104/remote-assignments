@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sum</title>
+  </head>
+  <body>
+    <input type="number" id="number" name="number" />
+    <button type="submit" id="submit">Submit</button>
+    <h2 id="sum"></h2>
+    <script>
+      const button = document.getElementById("submit");
+      const numberInput = document.getElementById("number");
+      const sum = document.getElementById("sum");
+
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const number = numberInput.value;
+        const url = `http://localhost:3000/data?number=${number}`;
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            sum.textContent = `${data}`;
+          })
+          .catch((err) => console.error(err));
+      });
+    </script>
+  </body>
+</html>
