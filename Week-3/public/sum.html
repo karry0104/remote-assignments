@@ -17,9 +17,15 @@
         const number = numberInput.value;
         const url = `http://localhost:3000/data?number=${number}`;
         fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            sum.textContent = `${data}`;
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(res.statusText);
+            } else {
+              return res.text();
+            }
+          })
+          .then((text) => {
+            sum.textContent = `${text}`;
           })
           .catch((err) => console.error(err));
       });

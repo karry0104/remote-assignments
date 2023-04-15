@@ -8,6 +8,8 @@ html(lang='en')
   body
   if name
     h2 Welcome, #{name}
+    form(action='/goodbye',method='post')
+      button(type="submit") goodbye
   else  
     h2 Welcome
       form(action="/trackName", method="post")

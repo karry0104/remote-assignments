@@ -1,10 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(cookieParser());
 
 router.get("/myName", (req, res) => {
   const userName = req.cookies.username;
@@ -17,15 +12,26 @@ router.get("/myName", (req, res) => {
 });
 
 router.get("/trackName", (req, res) => {
-  res.render("user");
+  const userName = req.cookies.username;
+  if (userName) {
+    res.redirect("/myName");
+  } else {
+    res.render("user");
+  }
 });
 
 router.post("/trackName", (req, res) => {
   res.cookie("username", req.body.username);
   if (!req.body.username) {
     res.render("trackname", { Welcome: "Enter your name" });
+  } else {
+    res.redirect("/myName");
   }
-  res.redirect("/myName");
+});
+
+router.post("/goodbye", (req, res) => {
+  res.clearCookie("username");
+  res.redirect("/trackName");
 });
 
 module.exports = router;
