@@ -5,8 +5,8 @@ router.get("/data", (req, res) => {
   const number = req.query.number;
   if (!number) {
     res.send("Lack of Parameter");
-  } else if (!Number.isInteger(+number)) {
-    res.send("Must be integer");
+  } else if (+number < 0 || !Number.isInteger(+number)) {
+    res.send("Must be Positive Integer");
   } else {
     const par = parseInt(number);
     let sum = 0;
